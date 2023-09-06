@@ -1,8 +1,11 @@
 const express = require("express");
+const cors = require("cors")
 const jsonGraphqlExpress = require("json-graphql-server");
 
 const PORT = 3333;
 const app = express();
+
+app.use(cors())
 
 const faker = require("faker");
 
@@ -140,6 +143,7 @@ const data = {
     products: allProducts,
 };
 app.use("/", jsonGraphqlExpress.default(data));
+
 app.listen(PORT, () => {
     console.log(`servidor iniciado na porta ${PORT}`);
 });
